@@ -1,0 +1,104 @@
+{
+  "UUID": "com.vsavinkov.claude",
+  "Name": "Claude Code Monitor",
+  "Version": "1.0.0.0",
+  "Author": "vsavinkov",
+  "Description": "Monitor up to 8 Claude Code sessions with real-time status, context usage, and token tracking.",
+  "Category": "Claude Code Monitor",
+  "CategoryIcon": "imgs/plugin-icon",
+  "Icon": "imgs/plugin-icon",
+  "CodePath": "bin/plugin.js",
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "6.4"
+  },
+  "OS": [
+    { "Platform": "mac", "MinimumVersion": "13.0" }
+  ],
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "Actions": [
+    {
+      "Name": "Agent Key",
+      "UUID": "com.vsavinkov.claude.agent-key",
+      "Icon": "imgs/action-icon",
+      "Tooltip": "Shows Claude Code session status. Tap to focus iTerm2 tab.",
+      "PropertyInspectorPath": "ui/agent-key-pi.html",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/action-icon",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Model Dial",
+      "UUID": "com.vsavinkov.claude.model-dial",
+      "Icon": "imgs/action-icon",
+      "Tooltip": "Rotate to cycle model. Push to create new Claude session.",
+      "PropertyInspectorPath": "ui/dial-pi.html",
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "layout": "layouts/selector.json",
+        "TriggerDescription": {
+          "Rotate": "Cycle model",
+          "Push": "New session",
+          "Touch": "Show model"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/action-icon",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Permission Dial",
+      "UUID": "com.vsavinkov.claude.perm-dial",
+      "Icon": "imgs/action-icon",
+      "Tooltip": "Rotate to adjust permission mode. Push to create new Claude session.",
+      "PropertyInspectorPath": "ui/dial-pi.html",
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "layout": "layouts/selector.json",
+        "TriggerDescription": {
+          "Rotate": "Adjust permissions",
+          "Push": "New session",
+          "Touch": "Show mode"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/action-icon",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Effort Dial",
+      "UUID": "com.vsavinkov.claude.effort-dial",
+      "Icon": "imgs/action-icon",
+      "Tooltip": "Rotate to adjust reasoning effort. Push to create new Claude session.",
+      "PropertyInspectorPath": "ui/dial-pi.html",
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "layout": "layouts/selector.json",
+        "TriggerDescription": {
+          "Rotate": "Adjust effort",
+          "Push": "New session",
+          "Touch": "Show effort"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/action-icon",
+          "TitleAlignment": "middle"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules/
+bridge/dist/
+plugin/com.vsavinkov.claude.sdPlugin/bin/
+plugin/com.vsavinkov.claude.sdPlugin/logs/
+*.log
+*.js.map
+.idea/
+package-lock.json
+*.streamDeckPlugin
+.DS_Store

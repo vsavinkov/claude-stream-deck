@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dial Settings</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #2d2d2d; color: #ccc; margin: 12px; font-size: 13px; }
+    h3 { margin: 0 0 12px; color: #fff; font-size: 14px; }
+    .info { color: #888; line-height: 1.5; }
+    .info strong { color: #aaa; }
+    .section { margin-bottom: 16px; padding: 8px; background: #363636; border-radius: 6px; }
+    .label { color: #999; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+    .value { color: #fff; font-size: 16px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="label">Controls</div>
+    <div class="info">
+      <strong>Rotate</strong> — cycle through options<br/>
+      <strong>Push</strong> — create new Claude session with current settings
+    </div>
+  </div>
+  <div class="section">
+    <div class="label">Defaults</div>
+    <div class="info">
+      Model: <strong>opus 1M</strong><br/>
+      Effort: <strong>high</strong><br/>
+      Permissions: <strong>bypassPermissions</strong>
+    </div>
+  </div>
+  <div class="section">
+    <div class="label">Tip</div>
+    <div class="info">
+      All dials share settings. Rotate any dial to change its value,
+      then push any dial to launch a new session with the combined
+      model + effort + permission selection.
+    </div>
+  </div>
+  <script>
+    function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent) {
+      const ws = new WebSocket(`ws://127.0.0.1:${inPort}`);
+      ws.onopen = () => ws.send(JSON.stringify({ event: inRegisterEvent, uuid: inPluginUUID }));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "id": "selector",
+  "items": [
+    {
+      "key": "prev",
+      "type": "text",
+      "rect": [0, 2, 200, 28],
+      "font": { "size": 14 },
+      "alignment": "center",
+      "color": "#666666",
+      "opacity": 0.6
+    },
+    {
+      "key": "current",
+      "type": "text",
+      "rect": [20, 32, 160, 36],
+      "font": { "size": 22, "weight": 700 },
+      "alignment": "center",
+      "color": "#FFFFFF"
+    },
+    {
+      "key": "next",
+      "type": "text",
+      "rect": [0, 70, 200, 28],
+      "font": { "size": 14 },
+      "alignment": "center",
+      "color": "#666666",
+      "opacity": 0.6
+    }
+  ]
+}

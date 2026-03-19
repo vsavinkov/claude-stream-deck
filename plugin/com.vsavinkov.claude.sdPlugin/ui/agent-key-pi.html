@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Agent Key</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #2d2d2d; color: #ccc; margin: 12px; font-size: 13px; }
+    .row { display: flex; align-items: center; margin-bottom: 8px; }
+    label { width: 80px; }
+    select { flex: 1; background: #3a3a3a; color: #fff; border: 1px solid #555; padding: 4px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <label>Slot</label>
+    <select id="slotIndex">
+      <option value="0">Slot 1</option>
+      <option value="1">Slot 2</option>
+      <option value="2">Slot 3</option>
+      <option value="3">Slot 4</option>
+      <option value="4">Slot 5</option>
+      <option value="5">Slot 6</option>
+      <option value="6">Slot 7</option>
+      <option value="7">Slot 8</option>
+    </select>
+  </div>
+  <script>
+    const $ = document.querySelector.bind(document);
+    let uuid, ws;
+
+    function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent, inInfo, inActionInfo) {
+      uuid = JSON.parse(inActionInfo).action;
+      const settings = JSON.parse(inActionInfo).payload?.settings || {};
+      $("#slotIndex").value = settings.slotIndex ?? "0";
+
+      ws = new WebSocket(`ws://127.0.0.1:${inPort}`);
+      ws.onopen = () => ws.send(JSON.stringify({ event: inRegisterEvent, uuid: inPluginUUID }));
+
+      $("#slotIndex").addEventListener("change", () => {
+        const payload = { slotIndex: parseInt($("#slotIndex").value) };
+        ws.send(JSON.stringify({
+          event: "setSettings",
+          context: inPluginUUID,
+          payload
+        }));
+      });
+    }
+  </script>
+</body>
+</html>
